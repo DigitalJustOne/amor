@@ -2,152 +2,131 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Carolina Tovar Leal</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --rosa-vibrante: #e91e63;
-            --oro-brillante: #d4af37;
-            --blanco-cristal: rgba(255, 255, 255, 0.85);
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            overflow: hidden; 
+            background: #fff0f5;
+            font-family: 'Poppins', sans-serif;
         }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
+        .wrapper {
+            position: relative;
+            width: 100vw; height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Poppins', sans-serif;
-            /* AQUÍ ESTÁ EL TRUCO DE LA IMAGEN RESPONSIVA */
-            background: url('imagen corazon rosa5.jpg') no-repeat center center fixed;
-            background-size: cover;
-            overflow: hidden;
-        }
-
-        /* Capa overlay para que el fondo no sea tan chillón y se lea bien */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 240, 245, 0.2);
-            z-index: 1;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffdde1 100%);
         }
 
         .card {
             position: relative;
-            z-index: 10;
+            z-index: 10; 
+            width: 90%;
+            max-width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            border-radius: 25px;
+            border: 2px solid #d4af37;
             text-align: center;
-            background: var(--blanco-cristal);
-            width: 85%;
-            max-width: 380px;
-            padding: 2.5rem 1.5rem;
-            border-radius: 30px;
-            border: 3px solid var(--oro-brillante);
-            backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1.5s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
-            color: var(--rosa-vibrante);
+            font-size: 2.2rem;
+            color: #ff2e63;
             margin: 0;
-            text-shadow: 1px 1px 0px rgba(255,255,255,1);
         }
 
         .sub {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #af9500;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
         .timer-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin: 15px 0;
         }
 
         .box {
-            background: white;
-            padding: 15px 5px;
+            background: #fff;
+            padding: 10px;
             border-radius: 15px;
-            border: 1px solid #f8bbd0;
-            box-shadow: 0 4px 10px rgba(216, 27, 96, 0.1);
+            border: 1px solid #ffe4e1;
         }
 
         .num {
             display: block;
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--rosa-vibrante);
-            line-height: 1;
+            color: #ff2e63;
         }
 
-        .tag {
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: var(--oro-brillante);
-        }
+        .tag { font-size: 0.6rem; color: #888; font-weight: bold; }
 
         #msg {
-            font-style: italic;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #444;
-            line-height: 1.6;
-            margin: 20px 0;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-style: italic;
+            margin: 15px 0;
+            line-height: 1.4;
+            min-height: 50px;
         }
 
-        .heart {
+        .heart-main {
             font-size: 2.5rem;
-            color: var(--rosa-vibrante);
-            animation: beat 1.2s infinite;
+            color: #ff2e63;
+            animation: pulse 1.5s infinite;
             display: inline-block;
-            filter: drop-shadow(0 0 5px rgba(233, 30, 99, 0.5));
         }
 
-        @keyframes beat {
+        /* LAS PARTÍCULAS: AHORA SÍ DESDE ARRIBA */
+        .particle {
+            position: absolute;
+            top: -50px; /* Forzado fuera de la pantalla arriba */
+            z-index: 100; /* Encima de todo */
+            pointer-events: none;
+            will-change: transform;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 0; 
+            }
+            10% { opacity: 1; }
+            100% { 
+                transform: translateY(110vh) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Estilo para los pétalos que caen sobre la imagen */
-        .petal {
-            position: absolute;
-            background: #ff80ab;
-            border-radius: 150% 0 150% 0;
-            opacity: 0.7;
-            z-index: 5;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(360deg); }
-        }
     </style>
 </head>
 <body>
+
+<div class="wrapper" id="container">
     <div class="card">
-        <h1>Carolina Tovar Leal</h1>
-        <div class="sub">Desde el 3 de marzo de 2026</div>
+        <h1>Carolina Mi Amor</h1>
+        <div class="sub">DESDE EL 3 DE MARZO DE 2026</div>
         
         <div class="timer-grid">
             <div class="box"><span class="num" id="d">0</span><span class="tag">DÍAS</span></div>
@@ -156,51 +135,85 @@
             <div class="box"><span class="num" id="s">0</span><span class="tag">SEGUNDOS</span></div>
         </div>
 
-        <div id="msg"></div>
-        <div class="heart">❤</div>
+        <p id="msg"></p>
+        <div class="heart-main">❤</div>
     </div>
+</div>
 
-    <script>
-        const target = new Date(2026, 2, 3, 0, 0, 0).getTime();
-        const frases = [
-            "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
-            "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
-            "Gracias por enseñarme lo que es amar de verdad.",
-            "Nuestra historia es mi tesoro más preciado.",
-            "Espero que estés cumpliendo cada uno de tus sueños.",
-            "El 3 de marzo cambió mi vida, pero no borró lo que siento.",
-            "Cinco años no se olvidan, se agradecen eternamente.",
-            "Hoy brillas en mi memoria como el primer día.",
-            "Tu felicidad siempre será mi mayor deseo.",
-            "Recordarte es volver a vivir los momentos más bellos.",
-            "Guardo con llave cada risa que compartimos.",
-            "Deseo que encuentres toda la paz que mereces.",
-            "Mi corazón guarda los mejores 5 años gracias a ti.",
-            "Sigue brillando, el mundo necesita tu luz.",
-            "Gracias por haber sido mi hogar durante tanto tiempo.",
-            "Hasta que el tiempo se detenga, mi gratitud será infinita."
-        ];
+<script>
+    // Contador exacto
+    const target = new Date(2026, 2, 3).getTime();
+    function updateClock() {
+        const now = new Date().getTime();
+        const diff = now - target;
+        document.getElementById('d').innerText = Math.floor(diff / 86400000);
+        document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000);
+        document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000);
+        document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-        function clock() {
-            const diff = Date.now() - target;
-            document.getElementById('d').innerText = Math.floor(diff / 86400000);
-            document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000);
-            document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000);
-            document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000);
-        }
+    const frases = [
+        "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
+        "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
+        "Gracias por enseñarme lo que es amar de verdad durante tanto tiempo.",
+        "Cuidado!.. un mostro!.",
+        "Nuestra historia es mi tesoro más preciado.",
+        "Espero que estés cumpliendo cada uno de tus sueños.",
+        "El 3 de marzo cambió mi vida, pero no borró lo que siento.",
+        "Siempre habrá un lugar para ti en mis oraciones.",
+        "Eres una mujer increíble, nunca dejes que nadie te diga lo contrario.",
+        "Cinco años no se olvidan, se agradecen eternamente.",
+        "Que la vida te devuelva toda la belleza que tú me diste.",
+        "A veces el amor también es saber soltar con el corazón lleno.",
+        "Hoy brillas en mi memoria como el primer día.",
+        "Tu felicidad siempre será mi mayor deseo.",
+        "Recordarte es volver a vivir los momentos más bellos de mi vida.",
+        "Cada segundo que pasa, agradezco haber coincidido contigo.",
+        "Que este día sea tan especial como lo eres tú.",
+        "Guardo con llave cada risa y cada aventura que compartimos.",
+        "Siempre viajare con tu recuerdo y tu dulce voz a mi lado.",
+        "Nos tomamos un tinto?.",
+        "Deseo que encuentres toda la paz que este mundo puede ofrecer.",
+        "Mi corazón guarda los mejores 5 años gracias a ti.",
+        "Sigue brillando, el mundo necesita tu luz.",
+        "Un brindis al cielo por lo que fuimos y por lo que serás.",
+        "No hay distancia que borre la huella que dejaste en mí.",
+        "Eres valiente, eres fuerte y eres inolvidable.",
+        "Gracias por haber sido mi hogar durante tanto tiempo.",
+        "Extraño cada domingo con tu compañia y los hermanos grim.",
+        "Hasta que el tiempo se detenga, mi gratitud hacia ti será infinita.",
+        "Cinco años que guardo como un tesoro.",
+        "Te deseo la felicidad más grande siempre.",
+        "Nos tomamos un tinto? ☕",
+        "Cuidado!.. un mostro! 👾"
+    ];
+    document.getElementById('msg').innerText = `"${frases[Math.floor(Math.random() * frases.length)]}"`;
 
-        setInterval(clock, 1000); clock();
-        document.getElementById('msg').innerText = `"${frases[Math.floor(Math.random() * frases.length)]}"`;
+    // Generador de lluvia (Corazones y Pétalos)
+    function createElement() {
+        const container = document.getElementById('container');
+        const el = document.createElement('div');
+        const isHeart = Math.random() > 0.5;
+        
+        el.className = 'particle';
+        el.innerHTML = isHeart ? '❤' : '🌸';
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        el.style.color = isHeart ? '#ff2e63' : '#ffb6c1';
+        
+        const duration = Math.random() * 3 + 4;
+        el.style.animationDuration = duration + 's';
+        
+        container.appendChild(el);
 
-        for(let i=0; i<15; i++) {
-            let p = document.createElement('div');
-            p.className = 'petal';
-            p.style.left = Math.random()*100+'vw';
-            p.style.width = p.style.height = (Math.random()*12+8)+'px';
-            p.style.animationDuration = (Math.random()*3+5)+'s';
-            p.style.top = '-5vh';
-            document.body.appendChild(p);
-        }
-    </script>
+        setTimeout(() => { el.remove(); }, duration * 1000);
+    }
+
+    // Intervalo constante para que siempre haya movimiento
+    setInterval(createElement, 300);
+</script>
+
 </body>
 </html>
