@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Carolina Tovar Leal</title>
+    <title>Para Carolina</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -22,96 +22,103 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #fff0f5 0%, #ffdde1 100%);
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e8 100%);
         }
 
         .card {
             position: relative;
             z-index: 10; 
-            width: 90%;
-            max-width: 350px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px 20px;
-            border-radius: 25px;
-            border: 2px solid #d4af37;
+            width: 92%;
+            max-width: 360px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 35px 20px;
+            border-radius: 30px;
+            border: 1.5px solid #d4af37;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(255, 46, 99, 0.1);
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: #ff2e63;
-            margin: 0;
+            margin: 0 0 10px 0;
         }
 
-        .sub {
-            font-size: 0.7rem;
+        /* El mensaje que pediste */
+        .intro-text {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+
+        .highlight-date {
+            font-size: 0.85rem;
             color: #af9500;
             font-weight: 600;
             letter-spacing: 1px;
             margin-bottom: 20px;
+            display: block;
         }
 
         .timer-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 15px 0;
+            gap: 12px;
+            margin: 20px 0;
         }
 
         .box {
             background: #fff;
-            padding: 10px;
-            border-radius: 15px;
+            padding: 12px;
+            border-radius: 18px;
             border: 1px solid #ffe4e1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
         .num {
             display: block;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #ff2e63;
+            line-height: 1.1;
         }
 
-        .tag { font-size: 0.6rem; color: #888; font-weight: bold; }
+        .tag { font-size: 0.65rem; color: #999; font-weight: 700; text-transform: uppercase; }
 
         #msg {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #444;
             font-style: italic;
-            margin: 15px 0;
-            line-height: 1.4;
-            min-height: 50px;
+            margin: 20px 0;
+            line-height: 1.5;
+            min-height: 60px;
         }
 
         .heart-main {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #ff2e63;
             animation: pulse 1.5s infinite;
             display: inline-block;
+            margin-top: 10px;
         }
 
-        /* LAS PARTÍCULAS: AHORA SÍ DESDE ARRIBA */
+        /* ANIMACIONES DESDE EL TOPE */
         .particle {
             position: absolute;
-            top: -50px; /* Forzado fuera de la pantalla arriba */
-            z-index: 100; /* Encima de todo */
+            top: -60px; /* Asegura que nazcan fuera de la vista arriba */
+            z-index: 100;
             pointer-events: none;
             will-change: transform;
             animation: fall linear forwards;
         }
 
         @keyframes fall {
-            0% { 
-                transform: translateY(0) rotate(0deg); 
-                opacity: 0; 
-            }
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
-            100% { 
-                transform: translateY(110vh) rotate(360deg); 
-                opacity: 0; 
-            }
+            90% { opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
         }
 
         @keyframes pulse {
@@ -125,14 +132,16 @@
 
 <div class="wrapper" id="container">
     <div class="card">
-        <h1>Carolina Mi Amor</h1>
-        <div class="sub">DESDE EL 3 DE MARZO DE 2026</div>
+        <h1>Carolina Tovar Leal</h1>
+        
+        <span class="intro-text">Desde el 3 de marzo de 2026</span>
+        <span class="highlight-date">HE VIVIDO SIN TI:</span>
         
         <div class="timer-grid">
-            <div class="box"><span class="num" id="d">0</span><span class="tag">DÍAS</span></div>
-            <div class="box"><span class="num" id="h">0</span><span class="tag">HORAS</span></div>
-            <div class="box"><span class="num" id="m">0</span><span class="tag">MINUTOS</span></div>
-            <div class="box"><span class="num" id="s">0</span><span class="tag">SEGUNDOS</span></div>
+            <div class="box"><span class="num" id="d">0</span><span class="tag">Días</span></div>
+            <div class="box"><span class="num" id="h">0</span><span class="tag">Horas</span></div>
+            <div class="box"><span class="num" id="m">0</span><span class="tag">Minutos</span></div>
+            <div class="box"><span class="num" id="s">0</span><span class="tag">Segundos</span></div>
         </div>
 
         <p id="msg"></p>
@@ -141,20 +150,29 @@
 </div>
 
 <script>
-    // Contador exacto
-    const target = new Date(2026, 2, 3).getTime();
+    // Configuración de fecha
+    const target = new Date(2026, 2, 3).getTime(); 
+
     function updateClock() {
         const now = new Date().getTime();
         const diff = now - target;
-        document.getElementById('d').innerText = Math.floor(diff / 86400000);
-        document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000);
-        document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000);
-        document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000);
+        
+        // Si la fecha aún no llega, mostrará ceros o puedes ajustar la lógica
+        const d = Math.max(0, Math.floor(diff / 86400000));
+        const h = Math.max(0, Math.floor((diff % 86400000) / 3600000));
+        const m = Math.max(0, Math.floor((diff % 3600000) / 60000));
+        const s = Math.max(0, Math.floor((diff % 60000) / 1000));
+
+        document.getElementById('d').innerText = d;
+        document.getElementById('h').innerText = h;
+        document.getElementById('m').innerText = m;
+        document.getElementById('s').innerText = s;
     }
     setInterval(updateClock, 1000);
     updateClock();
 
     const frases = [
+        
         "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
         "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
         "Gracias por enseñarme lo que es amar de verdad durante tanto tiempo.",
@@ -184,15 +202,16 @@
         "Gracias por haber sido mi hogar durante tanto tiempo.",
         "Extraño cada domingo con tu compañia y los hermanos grim.",
         "Hasta que el tiempo se detenga, mi gratitud hacia ti será infinita.",
-        "Cinco años que guardo como un tesoro.",
-        "Te deseo la felicidad más grande siempre.",
+        "Gracias por haber sido mi hogar durante tanto tiempo.",
+        "Nuestra historia es mi tesoro más preciado.",
+        "Te deseo toda la felicidad que el mundo pueda darte.",
         "Nos tomamos un tinto? ☕",
         "Cuidado!.. un mostro! 👾"
     ];
     document.getElementById('msg').innerText = `"${frases[Math.floor(Math.random() * frases.length)]}"`;
 
-    // Generador de lluvia (Corazones y Pétalos)
-    function createElement() {
+    // Lluvia de flores y corazones
+    function createParticle() {
         const container = document.getElementById('container');
         const el = document.createElement('div');
         const isHeart = Math.random() > 0.5;
@@ -203,16 +222,14 @@
         el.style.fontSize = (Math.random() * 20 + 15) + 'px';
         el.style.color = isHeart ? '#ff2e63' : '#ffb6c1';
         
-        const duration = Math.random() * 3 + 4;
+        const duration = Math.random() * 3 + 5; // Un poco más lento para que se aprecie
         el.style.animationDuration = duration + 's';
         
         container.appendChild(el);
-
         setTimeout(() => { el.remove(); }, duration * 1000);
     }
 
-    // Intervalo constante para que siempre haya movimiento
-    setInterval(createElement, 300);
+    setInterval(createParticle, 350);
 </script>
 
 </body>
