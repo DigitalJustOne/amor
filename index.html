@@ -3,42 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Carolina</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <title>Carolina Tovar Leal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background: #fff5f5; color: #5d4037; font-family: 'Quicksand', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
-        .card { text-align: center; background: white; padding: 2.5rem; border-radius: 30px; box-shadow: 0 10px 30px rgba(212,175,55,0.2); border: 2px solid #d4af37; width: 85%; max-width: 450px; z-index: 10; position: relative; }
-        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: #b8860b; margin: 0; }
-        .timer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 25px 0; }
-        .unit { background: #fffcf0; padding: 10px; border-radius: 12px; border: 1px solid #fce4ec; }
-        .n { font-size: 1.6rem; font-weight: 700; color: #d4af37; display: block; }
-        .l { font-size: 0.6rem; text-transform: uppercase; color: #bcaaa4; }
-        #msg { font-style: italic; font-size: 1.1rem; color: #6d4c41; margin-top: 20px; min-height: 60px; line-height: 1.4; }
-        .heart { font-size: 2rem; color: #f48fb1; margin-top: 15px; animation: p 1.5s infinite; display: inline-block; }
-        @keyframes p { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-        .petal { position: absolute; background: #ffc0cb; border-radius: 150% 0 150% 0; opacity: 0.3; pointer-events: none; animation: f linear infinite; }
-        @keyframes f { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
+        :root {
+            --rosa-fuerte: #d81b60; /* Rosa con fuerza, no lúgubre */
+            --oro: #af9500;
+            --fondo: #fff0f5;
+        }
+
+        body { 
+            margin: 0; 
+            background-color: var(--fondo); 
+            font-family: 'Poppins', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            overflow: hidden; 
+        }
+
+        /* Contenedor Adaptable */
+        .card { 
+            text-align: center; 
+            background: white; 
+            width: 85%; 
+            max-width: 400px; 
+            padding: 2rem; 
+            border-radius: 20px; 
+            border: 3px solid var(--oro); 
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.2);
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 { 
+            font-family: 'Dancing Script', cursive; 
+            font-size: 2.5rem; 
+            color: var(--rosa-fuerte); 
+            margin: 0 0 10px 0; 
+            line-height: 1.2;
+        }
+
+        .sub { 
+            font-size: 0.85rem; 
+            color: var(--oro); 
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* Grid del Contador Responsivo */
+        .timer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
+            margin-bottom: 20px;
+        }
+
+        .box { 
+            background: #fff9fb; 
+            padding: 12px; 
+            border-radius: 12px; 
+            border: 1px solid #f8bbd0;
+        }
+
+        .num { 
+            display: block; 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: var(--rosa-fuerte); 
+        }
+
+        .tag { 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            color: var(--oro);
+        }
+
+        #msg { 
+            font-style: italic; 
+            font-size: 1rem; 
+            color: #444; 
+            line-height: 1.5;
+            margin: 20px 0;
+            min-height: 60px;
+        }
+
+        .heart { 
+            font-size: 2.5rem; 
+            color: var(--rosa-fuerte); 
+            animation: beat 1.2s infinite; 
+            display: inline-block;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Pétalos con más color */
+        .petal { 
+            position: absolute; 
+            background: #ff80ab; 
+            border-radius: 150% 0 150% 0; 
+            opacity: 0.6; 
+            z-index: 1;
+            animation: fall linear infinite; 
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>Carolina Tovar Leal</h1>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Desde el 3 de marzo de 2026</p>
-        <div class="timer">
-            <div class="unit"><span class="n" id="d">0</span><span class="l">Días</span></div>
-            <div class="unit"><span class="n" id="h">0</span><span class="l">Hrs</span></div>
-            <div class="unit"><span class="n" id="m">0</span><span class="l">Min</span></div>
-            <div class="unit"><span class="n" id="s">0</span><span class="l">Seg</span></div>
+        <div class="sub">DESDE EL 3 DE MARZO DE 2026</div>
+        
+        <div class="timer-grid">
+            <div class="box"><span class="num" id="d">0</span><span class="tag">Días</span></div>
+            <div class="box"><span class="num" id="h">0</span><span class="tag">Horas</span></div>
+            <div class="box"><span class="num" id="m">0</span><span class="tag">Minutos</span></div>
+            <div class="box"><span class="num" id="s">0</span><span class="tag">Segundos</span></div>
         </div>
-        <div id="msg">Cargando tu mensaje...</div>
+
+        <div id="msg"></div>
         <div class="heart">❤</div>
     </div>
 
     <script>
-        // Fecha exacta: 3 de marzo de 2026
-        const start = new Date(2026, 2, 3).getTime(); 
-
-        const msgs = [
+        const target = new Date(2026, 2, 3, 0, 0, 0).getTime();
+        const frases = [
             "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
             "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
             "Gracias por enseñarme lo que es amar de verdad durante tanto tiempo.",
@@ -70,30 +169,23 @@
             "Hasta que el tiempo se detenga, mi gratitud hacia ti será infinita."
         ];
 
-        function up() {
-            const now = new Date().getTime();
-            const diff = now - start;
-            if (isNaN(diff)) return;
-
+        function clock() {
+            const diff = Date.now() - target;
             document.getElementById('d').innerText = Math.floor(diff / 86400000);
             document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000);
             document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000);
             document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000);
         }
 
-        setInterval(up, 1000);
-        up();
+        setInterval(clock, 1000); clock();
+        document.getElementById('msg').innerText = `"${frases[Math.floor(Math.random() * frases.length)]}"`;
 
-        const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
-        document.getElementById('msg').innerText = '"' + randomMsg + '"';
-
-        // Lluvia de pétalos
-        for(let i=0; i<15; i++) {
+        for(let i=0; i<20; i++) {
             let p = document.createElement('div');
             p.className = 'petal';
             p.style.left = Math.random()*100+'vw';
-            p.style.width = p.style.height = (Math.random()*10+10)+'px';
-            p.style.animationDuration = (Math.random()*3+5)+'s';
+            p.style.width = p.style.height = (Math.random()*15+10)+'px';
+            p.style.animationDuration = (Math.random()*2+4)+'s';
             p.style.top = '-5vh';
             document.body.appendChild(p);
         }
