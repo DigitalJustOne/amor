@@ -1,255 +1,103 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Para Carolina</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-
     <style>
-
-        body {
-
-            margin: 0; padding: 0;
-
-            background: linear-gradient(135deg, #fff5f5 0%, #fce4ec 100%);
-
-            color: #5d4037;
-
-            font-family: 'Quicksand', sans-serif;
-
-            display: flex; justify-content: center; align-items: center;
-
-            height: 100vh; overflow: hidden;
-
-        }
-
-        .container {
-
-            text-align: center;
-
-            background: rgba(255, 255, 255, 0.85);
-
-            padding: 2.5rem;
-
-            border-radius: 30px;
-
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-
-            border: 2px solid #d4af37;
-
-            width: 90%; max-width: 500px;
-
-            z-index: 10;
-
-        }
-
-        h1 {
-
-            font-family: 'Dancing Script', cursive;
-
-            font-size: 3rem; color: #b8860b; margin: 0;
-
-        }
-
-        .date-sub { font-size: 0.9rem; margin-bottom: 20px; opacity: 0.8; }
-
-        .counter { display: flex; justify-content: space-around; margin: 20px 0; }
-
-        .unit { display: flex; flex-direction: column; }
-
-        .num { font-size: 1.8rem; font-weight: 700; color: #d4af37; }
-
-        .lab { font-size: 0.7rem; text-transform: uppercase; color: #bcaaa4; }
-
-        #msg { font-style: italic; font-size: 1.1rem; min-height: 60px; margin-top: 20px; color: #6d4c41; }
-
-        .heart { font-size: 2rem; color: #f48fb1; margin-top: 20px; animation: pulse 1.5s infinite; }
-
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-
-        /* Pétalos */
-
-        .p { position: absolute; background: #ffc0cb; border-radius: 150% 0 150% 0; opacity: 0.4; z-index: 1; animation: f linear infinite; }
-
+        body { margin: 0; background: #fff5f5; color: #5d4037; font-family: 'Quicksand', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+        .card { text-align: center; background: white; padding: 2rem; border-radius: 25px; box-shadow: 0 10px 30px rgba(212,175,55,0.2); border: 2px solid #d4af37; width: 85%; max-width: 450px; position: relative; z-index: 10; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: #b8860b; margin: 0; }
+        p { font-size: 0.9rem; margin-bottom: 20px; color: #8d6e63; }
+        .timer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
+        .unit { background: #fffcf0; padding: 10px; border-radius: 12px; border: 1px solid #fce4ec; }
+        .n { font-size: 1.5rem; font-weight: 700; color: #d4af37; display: block; }
+        .l { font-size: 0.6rem; text-transform: uppercase; color: #bcaaa4; }
+        #msg { font-style: italic; font-size: 1.1rem; color: #6d4c41; margin-top: 20px; min-height: 50px; }
+        .heart { font-size: 2rem; color: #f48fb1; margin-top: 20px; animation: p 1.5s infinite; display: inline-block; }
+        @keyframes p { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .petal { position: absolute; background: #ffc0cb; border-radius: 150% 0 150% 0; opacity: 0.4; animation: f linear infinite; }
         @keyframes f { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
-
     </style>
-
 </head>
-
 <body>
-
-    <div id="pts"></div>
-
-    <div class="container">
-
-        <h1>Carolina mi amor</h1>
-
-        <div class="date-sub">Desde el 3 de marzo de 2026</div>
-
-        <div class="counter">
-
-            <div class="unit"><span class="num" id="d">0</span><span class="lab">Días</span></div>
-
-            <div class="unit"><span class="num" id="h">0</span><span class="lab">Horas</span></div>
-
-            <div class="unit"><span class="num" id="m">0</span><span class="lab">Min</span></div>
-
-            <div class="unit"><span class="num" id="s">0</span><span class="lab">Seg</span></div>
-
+    <div class="card">
+        <h1>Carolina Tovar Leal</h1>
+        <p>Desde el 3 de marzo de 2026...</p>
+        <div class="timer">
+            <div class="unit"><span class="n" id="d">0</span><span class="l">Días</span></div>
+            <div class="unit"><span class="n" id="h">0</span><span class="l">Hrs</span></div>
+            <div class="unit"><span class="n" id="m">0</span><span class="l">Min</span></div>
+            <div class="unit"><span class="n" id="s">0</span><span class="l">Seg</span></div>
         </div>
-
-        <div id="msg">Cargando un mensaje para ti...</div>
-
+        <div id="msg"></div>
         <div class="heart">❤</div>
-
     </div>
 
-
-
     <script>
-
-        const start = new Date('March 3, 2026 00:00:00').getTime();
-
+        const start = new Date('2026-03-03T00:00:00').getTime();
         const msgs = [
-
             "Te extraño en los colores de cada atardecer.",
-
             "Cinco años de amor son un tesoro que guardo bajo llave.",
-
             "Aunque hoy no estemos, mi amor por ti es incondicional.",
-
             "Eres y serás siempre la historia más bonita de mi vida.",
-
             "Te deseo luz, paz y toda la felicidad que mereces.",
-
             "Mi corazón aún grita tu nombre en el silencio.",
-
             "Gracias por cada sonrisa que me regalaste durante 5 años.",
-
             "La distancia no borra lo que el alma escribió."
-
             "Eres el recuerdo más dulce de mi vida.",
-
             "Aunque el tiempo avance, tu luz sigue iluminando mi pasado.",
-
             "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
-
             "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
-
             "Gracias por enseñarme lo que es amar de verdad durante tanto tiempo.",
-
             "Cuidado!.. un mostro!.",
-
             "Nuestra historia es mi tesoro más preciado.",
-
             "Espero que estés cumpliendo cada uno de tus sueños.",
-
             "El 3 de marzo cambió mi vida, pero no borró lo que siento.",
-
             "Siempre habrá un lugar para ti en mis oraciones.",
-
             "Eres una mujer increíble, nunca dejes que nadie te diga lo contrario.",
-
             "Cinco años no se olvidan, se agradecen eternamente.",
-
             "Que la vida te devuelva toda la belleza que tú me diste.",
-
             "A veces el amor también es saber soltar con el corazón lleno.",
-
             "Hoy brillas en mi memoria como el primer día.",
-
             "Tu felicidad siempre será mi mayor deseo.",
-
             "Recordarte es volver a vivir los momentos más bellos de mi vida.",
-
             "Cada segundo que pasa, agradezco haber coincidido contigo.",
-
             "Que este día sea tan especial como lo eres tú.",
-
             "Guardo con llave cada risa y cada aventura que compartimos.",
-
             "Siempre viajare con tu recuerdo y tu dulce voz a mi lado.",
-
             "Nos tomamos un tinto?.",
-
             "Deseo que encuentres toda la paz que este mundo puede ofrecer.",
-
             "Mi corazón guarda los mejores 5 años gracias a ti.",
-
             "Sigue brillando, el mundo necesita tu luz.",
-
             "Un brindis al cielo por lo que fuimos y por lo que serás.",
-
             "No hay distancia que borre la huella que dejaste en mí.",
-
             "Eres valiente, eres fuerte y eres inolvidable.",
-
             "Gracias por haber sido mi hogar durante tanto tiempo.",
-
             "Extraño cada domingo con tu compañia y los hermanos grim.",
-
             "Hasta que el tiempo se detenga, mi gratitud hacia ti será infinita."
-
         ];
 
-
-
-        function update() {
-
-            const now = new Date().getTime();
-
-            const diff = now - start;
-
-            document.getElementById('d').innerText = Math.floor(diff / 86400000);
-
-            document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000);
-
-            document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000);
-
-            document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000);
-
+        function up() {
+            const diff = Date.now() - start;
+            document.getElementById('d').innerHTML = Math.floor(diff / 86400000);
+            document.getElementById('h').innerHTML = Math.floor((diff % 86400000) / 3600000);
+            document.getElementById('m').innerHTML = Math.floor((diff % 3600000) / 60000);
+            document.getElementById('s').innerHTML = Math.floor((diff % 60000) / 1000);
         }
+        setInterval(up, 1000); up();
+        document.getElementById('msg').innerHTML = `"${msgs[Math.floor(Math.random() * msgs.length)]}"`;
 
-
-
-        setInterval(update, 1000);
-
-        update();
-
-        document.getElementById('msg').innerText = `"${msgs[Math.floor(Math.random() * msgs.length)]}"`;
-
-
-
-        const c = document.getElementById('pts');
-
-        for(let i=0; i<20; i++) {
-
+        for(let i=0; i<15; i++) {
             let p = document.createElement('div');
-
-            p.className = 'p';
-
+            p.className = 'petal';
             p.style.left = Math.random()*100+'vw';
-
             p.style.width = p.style.height = (Math.random()*10+10)+'px';
-
             p.style.animationDuration = (Math.random()*3+4)+'s';
-
-            p.style.animationDelay = Math.random()*5+'s';
-
-            c.appendChild(p);
-
+            p.style.top = '-5vh';
+            document.body.appendChild(p);
         }
-
     </script>
-
 </body>
-
 </html>
