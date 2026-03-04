@@ -7,94 +7,114 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --rosa-fuerte: #d81b60; /* Rosa con fuerza, no lúgubre */
-            --oro: #af9500;
-            --fondo: #fff0f5;
+            --rosa-vibrante: #e91e63;
+            --oro-brillante: #d4af37;
+            --blanco-cristal: rgba(255, 255, 255, 0.85);
         }
 
-        body { 
-            margin: 0; 
-            background-color: var(--fondo); 
-            font-family: 'Poppins', sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            overflow: hidden; 
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            /* AQUÍ ESTÁ EL TRUCO DE LA IMAGEN RESPONSIVA */
+            background: url('imagen corazon rosa5.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
         }
 
-        /* Contenedor Adaptable */
-        .card { 
-            text-align: center; 
-            background: white; 
-            width: 85%; 
-            max-width: 400px; 
-            padding: 2rem; 
-            border-radius: 20px; 
-            border: 3px solid var(--oro); 
-            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.2);
-            z-index: 10;
+        /* Capa overlay para que el fondo no sea tan chillón y se lea bien */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 240, 245, 0.2);
+            z-index: 1;
+        }
+
+        .card {
             position: relative;
+            z-index: 10;
+            text-align: center;
+            background: var(--blanco-cristal);
+            width: 85%;
+            max-width: 380px;
+            padding: 2.5rem 1.5rem;
+            border-radius: 30px;
+            border: 3px solid var(--oro-brillante);
+            backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease;
         }
 
-        h1 { 
-            font-family: 'Dancing Script', cursive; 
-            font-size: 2.5rem; 
-            color: var(--rosa-fuerte); 
-            margin: 0 0 10px 0; 
-            line-height: 1.2;
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: var(--rosa-vibrante);
+            margin: 0;
+            text-shadow: 1px 1px 0px rgba(255,255,255,1);
         }
 
-        .sub { 
-            font-size: 0.85rem; 
-            color: var(--oro); 
-            font-weight: 600;
-            letter-spacing: 1px;
+        .sub {
+            font-size: 0.75rem;
+            color: #af9500;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
             margin-bottom: 20px;
         }
 
-        /* Grid del Contador Responsivo */
-        .timer-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; 
-            margin-bottom: 20px;
-        }
-
-        .box { 
-            background: #fff9fb; 
-            padding: 12px; 
-            border-radius: 12px; 
+        .box {
+            background: white;
+            padding: 15px 5px;
+            border-radius: 15px;
             border: 1px solid #f8bbd0;
+            box-shadow: 0 4px 10px rgba(216, 27, 96, 0.1);
         }
 
-        .num { 
-            display: block; 
-            font-size: 1.8rem; 
-            font-weight: 700; 
-            color: var(--rosa-fuerte); 
+        .num {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--rosa-vibrante);
+            line-height: 1;
         }
 
-        .tag { 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            color: var(--oro);
+        .tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--oro-brillante);
         }
 
-        #msg { 
-            font-style: italic; 
-            font-size: 1rem; 
-            color: #444; 
-            line-height: 1.5;
+        #msg {
+            font-style: italic;
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.6;
             margin: 20px 0;
-            min-height: 60px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .heart { 
-            font-size: 2.5rem; 
-            color: var(--rosa-fuerte); 
-            animation: beat 1.2s infinite; 
+        .heart {
+            font-size: 2.5rem;
+            color: var(--rosa-vibrante);
+            animation: beat 1.2s infinite;
             display: inline-block;
+            filter: drop-shadow(0 0 5px rgba(233, 30, 99, 0.5));
         }
 
         @keyframes beat {
@@ -103,14 +123,19 @@
             100% { transform: scale(1); }
         }
 
-        /* Pétalos con más color */
-        .petal { 
-            position: absolute; 
-            background: #ff80ab; 
-            border-radius: 150% 0 150% 0; 
-            opacity: 0.6; 
-            z-index: 1;
-            animation: fall linear infinite; 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilo para los pétalos que caen sobre la imagen */
+        .petal {
+            position: absolute;
+            background: #ff80ab;
+            border-radius: 150% 0 150% 0;
+            opacity: 0.7;
+            z-index: 5;
+            animation: fall linear infinite;
         }
 
         @keyframes fall {
@@ -122,13 +147,13 @@
 <body>
     <div class="card">
         <h1>Carolina Tovar Leal</h1>
-        <div class="sub">DESDE EL 3 DE MARZO DE 2026</div>
+        <div class="sub">Desde el 3 de marzo de 2026</div>
         
         <div class="timer-grid">
-            <div class="box"><span class="num" id="d">0</span><span class="tag">Días</span></div>
-            <div class="box"><span class="num" id="h">0</span><span class="tag">Horas</span></div>
-            <div class="box"><span class="num" id="m">0</span><span class="tag">Minutos</span></div>
-            <div class="box"><span class="num" id="s">0</span><span class="tag">Segundos</span></div>
+            <div class="box"><span class="num" id="d">0</span><span class="tag">DÍAS</span></div>
+            <div class="box"><span class="num" id="h">0</span><span class="tag">HORAS</span></div>
+            <div class="box"><span class="num" id="m">0</span><span class="tag">MINUTOS</span></div>
+            <div class="box"><span class="num" id="s">0</span><span class="tag">SEGUNDOS</span></div>
         </div>
 
         <div id="msg"></div>
@@ -140,33 +165,20 @@
         const frases = [
             "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
             "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
-            "Gracias por enseñarme lo que es amar de verdad durante tanto tiempo.",
-            "Cuidado!.. un mostro!.",
+            "Gracias por enseñarme lo que es amar de verdad.",
             "Nuestra historia es mi tesoro más preciado.",
             "Espero que estés cumpliendo cada uno de tus sueños.",
             "El 3 de marzo cambió mi vida, pero no borró lo que siento.",
-            "Siempre habrá un lugar para ti en mis oraciones.",
-            "Eres una mujer increíble, nunca dejes que nadie te diga lo contrario.",
             "Cinco años no se olvidan, se agradecen eternamente.",
-            "Que la vida te devuelva toda la belleza que tú me diste.",
-            "A veces el amor también es saber soltar con el corazón lleno.",
             "Hoy brillas en mi memoria como el primer día.",
             "Tu felicidad siempre será mi mayor deseo.",
-            "Recordarte es volver a vivir los momentos más bellos de mi vida.",
-            "Cada segundo que pasa, agradezco haber coincidido contigo.",
-            "Que este día sea tan especial como lo eres tú.",
-            "Guardo con llave cada risa y cada aventura que compartimos.",
-            "Siempre viajare con tu recuerdo y tu dulce voz a mi lado.",
-            "Nos tomamos un tinto?.",
-            "Deseo que encuentres toda la paz que este mundo puede ofrecer.",
+            "Recordarte es volver a vivir los momentos más bellos.",
+            "Guardo con llave cada risa que compartimos.",
+            "Deseo que encuentres toda la paz que mereces.",
             "Mi corazón guarda los mejores 5 años gracias a ti.",
             "Sigue brillando, el mundo necesita tu luz.",
-            "Un brindis al cielo por lo que fuimos y por lo que serás.",
-            "No hay distancia que borre la huella que dejaste en mí.",
-            "Eres valiente, eres fuerte y eres inolvidable.",
             "Gracias por haber sido mi hogar durante tanto tiempo.",
-            "Extraño cada domingo con tu compañia y los hermanos grim.",
-            "Hasta que el tiempo se detenga, mi gratitud hacia ti será infinita."
+            "Hasta que el tiempo se detenga, mi gratitud será infinita."
         ];
 
         function clock() {
@@ -180,16 +192,15 @@
         setInterval(clock, 1000); clock();
         document.getElementById('msg').innerText = `"${frases[Math.floor(Math.random() * frases.length)]}"`;
 
-        for(let i=0; i<20; i++) {
+        for(let i=0; i<15; i++) {
             let p = document.createElement('div');
             p.className = 'petal';
             p.style.left = Math.random()*100+'vw';
-            p.style.width = p.style.height = (Math.random()*15+10)+'px';
-            p.style.animationDuration = (Math.random()*2+4)+'s';
+            p.style.width = p.style.height = (Math.random()*12+8)+'px';
+            p.style.animationDuration = (Math.random()*3+5)+'s';
             p.style.top = '-5vh';
             document.body.appendChild(p);
         }
     </script>
 </body>
 </html>
-
