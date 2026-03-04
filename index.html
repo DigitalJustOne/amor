@@ -142,8 +142,8 @@
     <div id="petals-container"></div>
 
     <div class="container">
-        <h1>Carolina mi amor</h1>
-        <div class="subtitle">Desde el 3 de marzo de 2026...</div>
+        <h1>Carolina Tovar Leal</h1>
+        <div class="subtitle">Desde aquel 3 de marzo de 2026...</div>
 
         <div class="counter-wrapper" id="timer"></div>
 
@@ -166,4 +166,73 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             document.getElementById("timer").innerHTML = `
+                <div class="time-unit"><span class="number">${days}</span><span class="label">Días</span></div>
+                <div class="time-unit"><span class="number">${hours}</span><span class="label">Hs</span></div>
+                <div class="time-unit"><span class="number">${minutes}</span><span class="label">Min</span></div>
+                <div class="time-unit"><span class="number">${seconds}</span><span class="label">Seg</span></div>
+            `;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
 
+        // --- MENSAJES ---
+        const messages = [
+            "Te extraño en los colores de cada atardecer.",
+            "Cinco años de amor son un tesoro que guardo bajo llave.",
+            "Aunque hoy no estemos, mi amor por ti es incondicional.",
+            "Eres y serás siempre la historia más bonita de mi vida.",
+            "Te deseo luz, paz y toda la felicidad que mereces.",
+            "Mi corazón aún grita tu nombre en el silencio.",
+            "Gracias por cada sonrisa que me regalaste durante 5 años.",
+            "La distancia no borra lo que el alma escribió."
+            "Eres el recuerdo más dulce de mi vida.",
+            "Aunque el tiempo avance, tu luz sigue iluminando mi pasado.",
+            "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
+            "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
+            "Gracias por enseñarme lo que es amar de verdad durante tanto tiempo.",
+            "Cuidado!.. un mostro!.",
+            "Nuestra historia es mi tesoro más preciado.",
+            "Espero que estés cumpliendo cada uno de tus sueños.",
+            "El 3 de marzo cambió mi vida, pero no borró lo que siento.",
+            "Siempre habrá un lugar para ti en mis oraciones.",
+            "Eres una mujer increíble, nunca dejes que nadie te diga lo contrario.",
+            "Cinco años no se olvidan, se agradecen eternamente.",
+            "Que la vida te devuelva toda la belleza que tú me diste.",
+            "A veces el amor también es saber soltar con el corazón lleno.",
+            "Hoy brillas en mi memoria como el primer día.",
+            "Tu felicidad siempre será mi mayor deseo.",
+            "Recordarte es volver a vivir los momentos más bellos de mi vida.",
+            "Cada segundo que pasa, agradezco haber coincidido contigo.",
+            "Que este día sea tan especial como lo eres tú.",
+            "Guardo con llave cada risa y cada aventura que compartimos.",
+            "Siempre viajare con tu recuerdo y tu dulce voz a mi lado.",
+            "Nos tomamos un tinto?.",
+            "Deseo que encuentres toda la paz que este mundo puede ofrecer.",
+            "Mi corazón guarda los mejores 5 años gracias a ti.",
+            "Sigue brillando, el mundo necesita tu luz.",
+            "Un brindis al cielo por lo que fuimos y por lo que serás.",
+            "No hay distancia que borre la huella que dejaste en mí.",
+            "Eres valiente, eres fuerte y eres inolvidable.",
+            "Gracias por haber sido mi hogar durante tanto tiempo.",
+            "Extraño cada domingo con tu compañia y los hermanos grim.",
+            "Hasta que el tiempo se detenga, mi gratitud hacia ti será infinita."
+        ];
+        ];
+
+        document.getElementById('daily-message').textContent = `"${messages[Math.floor(Math.random() * messages.length)]}"`;
+
+        // --- PÉTALOS ANIMADOS ---
+        const petalsContainer = document.getElementById('petals-container');
+        for (let i = 0; i < 25; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.width = Math.random() * 15 + 10 + 'px';
+            petal.style.height = petal.style.width;
+            petal.style.animationDuration = Math.random() * 3 + 5 + 's';
+            petal.style.delay = Math.random() * 5 + 's';
+            petalsContainer.appendChild(petal);
+        }
+    </script>
+</body>
+</html>
