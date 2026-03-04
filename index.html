@@ -1,238 +1,255 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Carolina | Siempre en mi mente</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+
+    <title>Para Carolina</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --soft-pink: #fce4ec;
-            --gold: #d4af37;
-            --deep-gold: #b8860b;
-            --text-color: #5d4037;
-        }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        body {
+
+            margin: 0; padding: 0;
+
             background: linear-gradient(135deg, #fff5f5 0%, #fce4ec 100%);
-            color: var(--text-color);
+
+            color: #5d4037;
+
             font-family: 'Quicksand', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
 
-        /* Pétalos cayendo */
-        .petal {
-            position: absolute;
-            background-color: #ffc0cb;
-            border-radius: 150% 0 150% 0;
-            opacity: 0.3;
-            z-index: 1;
-            pointer-events: none;
-            animation: fall linear infinite;
-        }
+            display: flex; justify-content: center; align-items: center;
 
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.4; }
-            90% { opacity: 0.4; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+            height: 100vh; overflow: hidden;
+
         }
 
         .container {
-            z-index: 10;
+
             text-align: center;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            padding: 3rem;
+
+            background: rgba(255, 255, 255, 0.85);
+
+            padding: 2.5rem;
+
             border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-            border: 2px solid var(--gold);
-            max-width: 85%;
-            width: 550px;
-            animation: fadeIn 2s ease-out;
+
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+
+            border: 2px solid #d4af37;
+
+            width: 90%; max-width: 500px;
+
+            z-index: 10;
+
         }
 
         h1 {
+
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--deep-gold);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+
+            font-size: 3rem; color: #b8860b; margin: 0;
+
         }
 
-        .subtitle {
-            font-size: 1rem;
-            color: #8d6e63;
-            margin-bottom: 2.5rem;
-            font-weight: 500;
-        }
+        .date-sub { font-size: 0.9rem; margin-bottom: 20px; opacity: 0.8; }
 
-        /* Contador Elegante */
-        .counter-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2rem;
-        }
+        .counter { display: flex; justify-content: space-around; margin: 20px 0; }
 
-        .time-unit {
-            display: flex;
-            flex-direction: column;
-            background: white;
-            padding: 12px;
-            border-radius: 15px;
-            min-width: 75px;
-            border: 1px solid var(--soft-pink);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
+        .unit { display: flex; flex-direction: column; }
 
-        .number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
+        .num { font-size: 1.8rem; font-weight: 700; color: #d4af37; }
 
-        .label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #bcaaa4;
-        }
+        .lab { font-size: 0.7rem; text-transform: uppercase; color: #bcaaa4; }
 
-        .message-box {
-            font-style: italic;
-            font-size: 1.2rem;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6d4c41;
-            padding: 0 20px;
-        }
+        #msg { font-style: italic; font-size: 1.1rem; min-height: 60px; margin-top: 20px; color: #6d4c41; }
 
-        .heart {
-            font-size: 2rem;
-            color: #f48fb1;
-            margin-top: 1.5rem;
-            display: inline-block;
-            animation: heartbeat 1.5s infinite;
-        }
+        .heart { font-size: 2rem; color: #f48fb1; margin-top: 20px; animation: pulse 1.5s infinite; }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* Pétalos */
+
+        .p { position: absolute; background: #ffc0cb; border-radius: 150% 0 150% 0; opacity: 0.4; z-index: 1; animation: f linear infinite; }
+
+        @keyframes f { 0% { transform: translateY(-10vh) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
+
     </style>
+
 </head>
+
 <body>
 
-    <div id="petals-container"></div>
+    <div id="pts"></div>
 
     <div class="container">
-        <h1>Carolina Tovar Leal</h1>
-        <div class="subtitle">Desde aquel 3 de marzo de 2026...</div>
 
-        <div class="counter-wrapper" id="timer"></div>
+        <h1>Carolina mi amor</h1>
 
-        <div class="message-box" id="daily-message"></div>
+        <div class="date-sub">Desde el 3 de marzo de 2026</div>
 
-        <div class="heart">♥</div>
+        <div class="counter">
+
+            <div class="unit"><span class="num" id="d">0</span><span class="lab">Días</span></div>
+
+            <div class="unit"><span class="num" id="h">0</span><span class="lab">Horas</span></div>
+
+            <div class="unit"><span class="num" id="m">0</span><span class="lab">Min</span></div>
+
+            <div class="unit"><span class="num" id="s">0</span><span class="lab">Seg</span></div>
+
+        </div>
+
+        <div id="msg">Cargando un mensaje para ti...</div>
+
+        <div class="heart">❤</div>
+
     </div>
 
+
+
     <script>
-        // --- FECHA DE RUPTURA CORREGIDA A 2026 ---
-        const breakUpDate = new Date('March 3, 2026 00:00:00').getTime();
 
-        function updateTimer() {
-            const now = new Date().getTime();
-            const distance = now - breakUpDate;
+        const start = new Date('March 3, 2026 00:00:00').getTime();
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const msgs = [
 
-            document.getElementById("timer").innerHTML = `
-                <div class="time-unit"><span class="number">${days}</span><span class="label">Días</span></div>
-                <div class="time-unit"><span class="number">${hours}</span><span class="label">Hs</span></div>
-                <div class="time-unit"><span class="number">${minutes}</span><span class="label">Min</span></div>
-                <div class="time-unit"><span class="number">${seconds}</span><span class="label">Seg</span></div>
-            `;
-        }
-        setInterval(updateTimer, 1000);
-        updateTimer();
-
-        // --- MENSAJES ---
-        const messages = [
             "Te extraño en los colores de cada atardecer.",
+
             "Cinco años de amor son un tesoro que guardo bajo llave.",
+
             "Aunque hoy no estemos, mi amor por ti es incondicional.",
+
             "Eres y serás siempre la historia más bonita de mi vida.",
+
             "Te deseo luz, paz y toda la felicidad que mereces.",
+
             "Mi corazón aún grita tu nombre en el silencio.",
+
             "Gracias por cada sonrisa que me regalaste durante 5 años.",
+
             "La distancia no borra lo que el alma escribió."
+
             "Eres el recuerdo más dulce de mi vida.",
+
             "Aunque el tiempo avance, tu luz sigue iluminando mi pasado.",
+
             "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
+
             "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
+
             "Gracias por enseñarme lo que es amar de verdad durante tanto tiempo.",
+
             "Cuidado!.. un mostro!.",
+
             "Nuestra historia es mi tesoro más preciado.",
+
             "Espero que estés cumpliendo cada uno de tus sueños.",
+
             "El 3 de marzo cambió mi vida, pero no borró lo que siento.",
+
             "Siempre habrá un lugar para ti en mis oraciones.",
+
             "Eres una mujer increíble, nunca dejes que nadie te diga lo contrario.",
+
             "Cinco años no se olvidan, se agradecen eternamente.",
+
             "Que la vida te devuelva toda la belleza que tú me diste.",
+
             "A veces el amor también es saber soltar con el corazón lleno.",
+
             "Hoy brillas en mi memoria como el primer día.",
+
             "Tu felicidad siempre será mi mayor deseo.",
+
             "Recordarte es volver a vivir los momentos más bellos de mi vida.",
+
             "Cada segundo que pasa, agradezco haber coincidido contigo.",
+
             "Que este día sea tan especial como lo eres tú.",
+
             "Guardo con llave cada risa y cada aventura que compartimos.",
+
             "Siempre viajare con tu recuerdo y tu dulce voz a mi lado.",
+
             "Nos tomamos un tinto?.",
+
             "Deseo que encuentres toda la paz que este mundo puede ofrecer.",
+
             "Mi corazón guarda los mejores 5 años gracias a ti.",
+
             "Sigue brillando, el mundo necesita tu luz.",
+
             "Un brindis al cielo por lo que fuimos y por lo que serás.",
+
             "No hay distancia que borre la huella que dejaste en mí.",
+
             "Eres valiente, eres fuerte y eres inolvidable.",
+
             "Gracias por haber sido mi hogar durante tanto tiempo.",
+
             "Extraño cada domingo con tu compañia y los hermanos grim.",
+
             "Hasta que el tiempo se detenga, mi gratitud hacia ti será infinita."
-        ];
+
         ];
 
-        document.getElementById('daily-message').textContent = `"${messages[Math.floor(Math.random() * messages.length)]}"`;
 
-        // --- PÉTALOS ANIMADOS ---
-        const petalsContainer = document.getElementById('petals-container');
-        for (let i = 0; i < 25; i++) {
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.width = Math.random() * 15 + 10 + 'px';
-            petal.style.height = petal.style.width;
-            petal.style.animationDuration = Math.random() * 3 + 5 + 's';
-            petal.style.delay = Math.random() * 5 + 's';
-            petalsContainer.appendChild(petal);
+
+        function update() {
+
+            const now = new Date().getTime();
+
+            const diff = now - start;
+
+            document.getElementById('d').innerText = Math.floor(diff / 86400000);
+
+            document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000);
+
+            document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000);
+
+            document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000);
+
         }
+
+
+
+        setInterval(update, 1000);
+
+        update();
+
+        document.getElementById('msg').innerText = `"${msgs[Math.floor(Math.random() * msgs.length)]}"`;
+
+
+
+        const c = document.getElementById('pts');
+
+        for(let i=0; i<20; i++) {
+
+            let p = document.createElement('div');
+
+            p.className = 'p';
+
+            p.style.left = Math.random()*100+'vw';
+
+            p.style.width = p.style.height = (Math.random()*10+10)+'px';
+
+            p.style.animationDuration = (Math.random()*3+4)+'s';
+
+            p.style.animationDelay = Math.random()*5+'s';
+
+            c.appendChild(p);
+
+        }
+
     </script>
+
 </body>
+
 </html>
