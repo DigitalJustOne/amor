@@ -104,6 +104,14 @@
             margin-top: 10px;
         }
 
+        /* Estilo para el reproductor */
+        .music-player {
+            margin-top: 15px;
+            border-radius: 15px;
+            overflow: hidden;
+            line-height: 0;
+        }
+
         /* ANIMACIONES DESDE EL TOPE */
         .particle {
             position: absolute;
@@ -145,6 +153,11 @@
         </div>
 
         <p id="msg"></p>
+
+        <div class="music-player">
+            <iframe width="100%" height="80" src="https://www.youtube.com/embed/videoseries?list=PLRpm3y63w6iPJ1mSC34zTHHNKgjfvuQgw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
         <div class="heart-main">❤</div>
     </div>
 </div>
@@ -173,6 +186,103 @@
 
     const frases = [
         
+        "A veces paso por una calle de Bogotá y sin darme cuenta termino pensando en ti.",
+        "Carito, todavía hay momentos del día en los que me acuerdo de tu sonrisa sin razón.",
+        "Hay recuerdos contigo que aparecen de la nada, como si nunca se hubieran ido.",
+        "Aunque el tiempo pase, hay partes de mi vida que siempre van a tener tu nombre.",
+        "Hay mujeres que uno recuerda… y hay mujeres que uno nunca deja de sentir.",
+        "Contigo aprendí que algunos momentos simples terminan siendo los más importantes.",
+        "A veces me acuerdo de lo mucho que te gustaba tener todo en orden.",
+        "Siempre me sorprendió la disciplina con la que hacías todo.",
+        "Verte trabajar y lograr lo que te proponías siempre me pareció impresionante.",
+        "Siempre fuiste una mujer demasiado capaz para todo lo que te proponías.",
+        "Carito, tu elegancia era de esas cosas que no se pueden copiar.",
+        "Hay belleza… y luego está esa presencia que tú tienes cuando entras a un lugar.",
+        "Hay personas que llenan los espacios con su forma de ser.",
+        "Tu sonrisa tenía la habilidad de cambiar cualquier momento.",
+        "Hay risas que todavía resuenan en la memoria.",
+        "Siempre me gustó hacerte reír.",
+        "Cuando lograba sacarte una carcajada sentía que el día ya valía la pena.",
+        "Hay conversaciones que uno recuerda más por la compañía que por lo que se dijo.",
+        "Pasábamos horas hablando y el tiempo simplemente se iba.",
+        "Los chismes de tu trabajo terminaron siendo parte de mi rutina también.",
+        "Jeimy, Dennis y Claudia se volvieron personajes recurrentes en nuestras noches.",
+        "Hay recuerdos que se quedan porque fueron demasiado cotidianos.",
+        "Prepararte el tinto cada día se volvió una costumbre que nunca me pesó.",
+        "Hay rituales pequeños que terminan significando mucho.",
+        "El café de la mañana tenía otro sabor cuando era para ti.",
+        "Hay momentos simples que terminan siendo los más reales.",
+        "Recogerte y verte subir al carro sonriendo siempre me alegraba.",
+        "Hay sonrisas que uno quisiera volver a ver aunque sea un segundo.",
+        "Las carreteras también guardan recuerdos.",
+        "Ese viaje de regreso de Neiva quedó grabado en mi memoria.",
+        "Hay locuras que sólo pasan una vez en la vida.",
+        "Parar en esa carretera en medio de la oscuridad fue de esas historias que sólo dos personas entienden.",
+        "Cada vez que esa ruta aparece en la memoria, aparece también ese recuerdo.",
+        "Hay noches que el tiempo no logra borrar.",
+        "Hay momentos que simplemente fueron demasiado intensos para olvidarlos.",
+        "Contigo entendí que el deseo también puede ser una forma de amor.",
+        "Hay personas que despiertan algo en uno que nunca vuelve a ser igual.",
+        "Mi cuerpo siempre tuvo una forma muy clara de demostrar cuánto te quería.",
+        "A veces las palabras no alcanzaban para explicar lo que sentía por ti.",
+        "Hay pasiones que no se inventan, simplemente existen.",
+        "Hay miradas que decían mucho más que cualquier frase.",
+        "Hay historias que se escriben en silencios compartidos.",
+        "Las películas en la cama terminaron siendo más que simples películas.",
+        "Hay camas que terminan siendo testigos de demasiados recuerdos.",
+        "Algunas noches se quedan grabadas para siempre.",
+        "Hay momentos que todavía se sienten cercanos.",
+        "Viajar nunca fue lo mío… pero contigo terminó siendo distinto.",
+        "Por ti terminé disfrutando viajes que antes ni me interesaban.",
+        "Hay personas por las que uno cambia cosas que jamás pensó cambiar.",
+        "Las fotos que tomábamos ahora son pedazos de historia.",
+        "Hay recuerdos guardados en imágenes.",
+        "Tu familia terminó siendo parte importante de mi vida también.",
+        "A veces adaptarse también es una forma de amor.",
+        "Compartir con tu familia fue algo que siempre intenté hacer bien.",
+        "Hay mesas familiares que guardan muchas historias.",
+        "Hay momentos que sólo existen porque alguien especial estaba al lado.",
+        "En los viajes siempre ibas a mi lado.",
+        "Y sí… muchas veces terminaba tocándote la pierna mientras manejaba.",
+        "Hay costumbres que nacen solas.",
+        "Las carreteras se sienten distintas cuando alguien especial va en el asiento de al lado.",
+        "Hay músicas que todavía me recuerdan a esos momentos.",
+        "Rancheras, reggaetón viejito y dancehall sonaban fuerte en el carro.",
+        "Hay canciones que todavía me devuelven a esas noches.",
+        "Cantar a todo volumen en el carro terminó siendo parte de nuestra historia.",
+        "Hay recuerdos que tienen banda sonora.",
+        "Bailar bachata contigo siempre tenía algo especial.",
+        "Las discotecas se sentían distintas cuando bailábamos.",
+        "Hay conexiones que se sienten incluso en un baile.",
+        "Algunas miradas en medio de una canción dicen todo.",
+        "Hay historias que se cuentan en pasos de baile.",
+        "También recuerdo cuando cocinabas.",
+        "Cuando estabas de buen humor la cocina se volvía un espectáculo.",
+        "Hay platos que saben mejor porque los prepara alguien especial.",
+        "Siempre admiré la dedicación que le ponías a todo.",
+        "Hay personas que hacen bien todo lo que deciden hacer.",
+        "Tu determinación siempre fue algo que respeté mucho.",
+        "Hay carácter en las personas que saben lo que quieren.",
+        "Siempre me pareció admirable tu forma de perseguir objetivos.",
+        "Hay mujeres que simplemente nacieron para lograr cosas grandes.",
+        "Tu forma de enfrentar la vida siempre fue fuerte.",
+        "Hay personas que dejan huella sin proponérselo.",
+        "A veces uno no dimensiona lo que está viviendo hasta que pasa el tiempo.",
+        "Hay historias que se entienden mejor cuando ya son recuerdos.",
+        "Algunas personas cambian la manera en que ves el mundo.",
+        "Hay relaciones que marcan etapas completas de la vida.",
+        "Cinco años pueden contener miles de momentos.",
+        "Hay vidas enteras dentro de una historia de amor.",
+        "Hay recuerdos que aparecen cuando menos lo esperas.",
+        "Hay lugares de Bogotá que inevitablemente me hacen pensar en ti.",
+        "Esta ciudad terminó llena de pedazos de nuestra historia.",
+        "Hay calles que todavía parecen llevar tu nombre.",
+        "Algunas esquinas guardan momentos que nadie más conoce.",
+        "Hay recuerdos que siguen caminando por la ciudad.",
+        "Hay historias que no desaparecen, sólo cambian de lugar en la memoria.",
+        "Al final algunas personas no se olvidan.",
+        "Simplemente aprendes a vivir con los recuerdos que dejaron.",
+        "Y contigo quedaron muchos de esos recuerdos buenos.",
         "Te deseo paz, amor y que nunca te falte una razón para sonreír.",
         "Hoy el contador marca un día más, pero mi cariño sigue intacto.",
         "Gracias por enseñarme lo que es amar de verdad durante tanto tiempo.",
@@ -234,5 +344,6 @@
 
 </body>
 </html>
+
 
 
